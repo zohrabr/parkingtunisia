@@ -1,0 +1,30 @@
+{% extends 'car/base.html' %}
+{% block title %} login {% endblock %}
+ {% block body_block %}
+<div class="span3"></div>
+<div class="span6">
+<div class="hero-unit">
+ <div class="panel panel-warning">
+  <div class="panel-heading">Se connecter</div>
+ <div class="panel-body">
+<form id="login_form" method="post" action="/car/login/">
+	{% csrf_token %}
+        {% if bad_details %}
+        <p><strong>votre @email et/ou mot de passe sont incorrectes !</strong></p>
+        {% elif disabled_account %}
+        <p><strong>votre compte est actuellemnt désactivée; vous ne pouvez pas vous connecter</strong></p>
+        {% endif %}
+
+      <h3>  Email:</h3>
+      <input type="text"  placeholder="Email" name="email"  />
+        <br/>
+        <h3>Mot de passe:</h3>
+ <input type="password"  placeholder="Password" name="password"  />
+        <br /><br /> <br />
+        <button align ="center"class="btn btn-primary" type="submit">se connecter</button>
+<br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
+    </form>
+</div></div>
+</div> </div>
+
+{% endblock %}

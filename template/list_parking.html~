@@ -1,0 +1,13 @@
+{% extends 'car/base.html' %}
+{% block title %} Mes parkings{% endblock %}
+
+
+{% block body_block %}
+	<h1> La liste de mes parkings : </h1>
+	{% for parking in list_park %}
+		<h2>nom: </h2> <h3> {{ parking.namepark }} </h3>
+		<h2>nombre de place vide: <h3> {{ parking.nbplacevide }} <h3>
+	
+	{% endfor %}
+{% endblock %}
+

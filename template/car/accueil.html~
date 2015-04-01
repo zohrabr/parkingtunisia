@@ -1,0 +1,36 @@
+{% extends 'car/base.html' %}
+{% load static %}
+{% block title %} Accueil {% endblock %}
+{% block body_block %} 
+
+<div class="hero-unit">
+<div id="main-slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#main-slider" data-slide-to="1"></li>
+				<li data-target="#main-slider" data-slide-to="2"></li>
+				
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img style="max-height: 550px" class="img-responsive" src="/static/slide/a1.jpg" alt="slider">
+					
+				</div>
+				<div class="item">
+					<img style="max-height: 550px" class="img-responsive" src="/static/slide/a2.jpg" alt="slider">
+					
+				</div>
+				<div class="item">
+					<img style="max-height: 550px" class="img-responsive" src="/static/slide/a3.jpg" alt="slider">
+					
+				</div>
+				
+				
+			</div>
+		</div>
+</div>
+{%  endblock %}
+
+</body>
+</html>
+

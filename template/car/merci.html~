@@ -1,0 +1,5 @@
+{% extends 'car/base.html' %}
+{% block title %} thx {% endblock %}
+{% block body_block %} <h1>merci pour votre inscription </h1>  </br> 
+
+{% endblock %}

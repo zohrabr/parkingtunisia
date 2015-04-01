@@ -1,0 +1,39 @@
+{% extends 'car/base.html' %}
+{% block title %} register here ! {% endblock %}
+
+
+
+{% block body_block %}
+      <h1> Inscription (c'est gratuit ) </h1>
+	{% if registered %}
+        <p>Merci pour votre inscription</p>
+
+      <!--  <p><a href="/rango/login/">Login</a> when you are ready to rango.</p> -->
+        {% else %}
+        <form  id="user_form" method="post" action="/car/register/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 > enregistrer ici</h2>
+            <!-- Display each form here -->
+
+            {% for field in user_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {% endfor %}
+
+            {% for field in profil_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}<br/>
+            {{ field }}<br />
+            {% endfor %}
+
+            <br />
+            <!-- Provide a button to click to submit the form. -->
+            <input  type="submit" name="Inscription" value="Register"/>
+        </form>
+        {% endif %}
+    
+  {% endblock %}
+
+

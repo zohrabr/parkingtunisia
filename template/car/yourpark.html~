@@ -1,0 +1,5 @@
+{% extends 'car/base.html' %}
+{% block title %} Disponible {% endblock %}
+{% block body_block %} 
+votre lieu de travail est {{ c }}
+ 

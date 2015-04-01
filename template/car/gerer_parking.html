@@ -1,0 +1,46 @@
+{% extends 'car/base.html' %}
+{% block title %} Mes parkings{% endblock %}
+
+
+{% block body_block %}
+<div class="span2"></div>
+<div class="span10">
+<div class="hero-unit">
+	{% if list_park %}
+<div class="panel panel-success">
+  <div class="panel-heading">La liste de mes parkings :</div>
+ <div class="panel-body">
+<div class="span2">	
+<font size ="5" color="orange"> Nom </font></div>
+
+<div class="span3">
+<font size ="5" color="orange">Nombre totale de place </font>
+</div>
+<div class="span4"><font size ="5" color="orange">Nombre de place disponible </font>
+</div>
+</br> </br>
+	{% for parking in list_park %}
+
+<div class="span2">	
+{{ parking.namepark }} </div>
+
+<div class="span3">
+ {{ parking.nbrplace }} <br>
+</div>
+<div class="span4">
+<input type="number"  value="{{ parking.nbplacevide }}" name="nbvide"  />
+</div>
+</br> </br>
+	{% endfor %}
+</div></div> </div>
+	{% else %}
+
+	<div class="span9">
+	<h1>vous n'avez auccun parking ! </h1> 
+	<p > si vous voulez ajouter un parking<a href="/car/add_parking"> cliquer ici </p>
+	</div>
+	{% endif %}
+	
+</div></div>
+
+{% endblock %}

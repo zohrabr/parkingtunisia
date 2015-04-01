@@ -1,0 +1,26 @@
+
+{% extends 'car/base.html' %}
+{% block title %} Disponible {% endblock %}
+{% block body_block %} 
+<h1> donner des renseignements sur votre lieu de travail </h1>
+<form id="gardeform" method="post" action="/car/garde/">
+
+            {% csrf_token %}
+		 
+          {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+</br>
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+</br>
+            {% endfor %} 
+
+
+            <input type="submit" name="submit" value="parking" />
+
+        </form>
+{% endblock %}

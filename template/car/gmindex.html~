@@ -1,0 +1,11 @@
+
+{% load static %}
+    <input id="searchBox" type="text">
+    <div id="map-canvas" style="height: 700px;width: 100%;float:left;border:solid 4px orange; "></div>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="{% static 'js/markerclusterer.js' %}"></script>
+    <script src="{%  static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+
+<div></div>
+
