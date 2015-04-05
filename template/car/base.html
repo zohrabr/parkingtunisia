@@ -10,11 +10,9 @@
 
     <!-- Custom Fonts -->
     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-
 	
      <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> 
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"> 
+   
 <link href="{% static 'css/agency.css' %}" rel="stylesheet">    
 <link href="{% static 'css/main.css' %}" rel="stylesheet">
    <link href="{% static 'css/animate.css' %}" rel="stylesheet" >
@@ -30,7 +28,7 @@
 <div class="navbar-header">
 
 	<a class="brand " href="#">
-<font size="6" color="#8FCF3C"><i class="fa fa-clock"><img src="{% static 'img/car.png' %}" style="height: 60px; width:100px ;" />
+<font size="6" color="#8FCF3C"><i class="fa fa-clock"><img src="{% static 'img/car.png' %}" style="height: 60px; width:100px;" />
 <b>ParkTun</b> </i> </font></a>
      
 </div>
@@ -41,58 +39,54 @@
 
         <ul class="sidebar-nav">
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><img src="{% static 'img/home.png'' %}" style="height: 25px;width:25px ;"/></a>
-            <a id="menu-close" href="#" class="btn btn-success btn-lg pull-right toggle"><font size ="5" color="black">X</font></a>
-     
+           
 <li class="sidebar-brand">
-	<a href="#"  onclick = $("#menu-close").click(); ><font size ="6" color="#8FCF3C"><b>Menu</b></font></a>
+	<a href="#"  onclick = $("#menu-close").click(); ><font  color="#8FCF3C"><b><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu</h2></b></font></a>
   </li>	
-
           
-            <li>
-                <a href="/car/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Accueil</b></font></a>
+            <li class="text-center">
+                <a href="/car/" onclick = $("#menu-close").click(); ><h3><font color="#8FCF3C" >Accueil</font></h3></a>
             </li>
 	  {% if user.is_authenticated %}
-<li id="actions">
-                <a href="#" data-toggle="modal" data-target="#myModal" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Action</b></font></a>
-            </li>
+ <li class="text-center" id="actions"><a href="#" data-toggle="modal" data-target="#myModal"><font  color="#8FCF3C" ><h3>Action</h3></font></a></li>
 
-	 <li>
-                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Consulter</b></font></a>
+	 <li class="text-center">
+                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3>Consulter</h3></font></a>
             </li>
-	<li>
-               <a href="/car/logout" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Deconnexion</b> </font></a>
+	<li class="text-center">
+               <a href="/car/logout" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3>Deconnexion</h3> </font></a>
             </li>
 
 {% else %}
             
-            <li>
-                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Consulter</b></font></a>
-            </li>
-            <li>
-                <a href="/car/inscription/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>S'inscrire</b></font></a>
-            </li>
-            <li>
-                <a href="/car/login/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Se connecter</b></font></a>
+            <li class="text-center">
+                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3>Consulter</h3></font></a>
+            </li class="text-center">
+            <li class="text-center">
+                <a href="/car/inscription/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3>S'inscrire</h3></font></a>
+            </li >
+            <li class="text-center">
+                <a href="/car/login/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3>Se connecter</h3></font></a>
             </li>
 {% endif %}
         </ul>
     </nav>
 
 
-                <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-        <h4 class="modal-title panel-success" id="myModalLabel">Je veux :</h4>
+        <h4 class="modal-title panel-success" id="myModalLabel">je veux :</h4>
       </div>
       <div class="modal-body">
 
           <ul class="list-group-item" style="list-style-type: None">
-       <li class="text-center" id="p2" ><a class="btn btn-warning" href="/car/add_parking/">&nbsp;&nbsp;&nbsp; Ajouter un parking &nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-success " href="/car/my_parking_list/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consulter la liste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-danger " href="/car/gerer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gérer un parking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></br>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-info" href="/car/delete/">supprimer un parking</a></li>
+       <li class="text-center" id="p2" ><a class="btn btn-success" href="/car/add_parking/">&nbsp;&nbsp;&nbsp; Ajouter un parking &nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
+<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-danger" href="/car/my_parking_list/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consulter la liste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
+<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-info" href="/car/gerer/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gérer un parking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></br>
+<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-primary" href="/car/delete/">supprimer un parking</a></li>
           </ul>
         </div>
       <div class="modal-footer">
@@ -101,6 +95,7 @@
     </div>
   </div>
 </div>
+               
 
 
       {% block body_block %}               
@@ -118,32 +113,9 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.parallax.js' %}"></script>
 <script src="{% static 'js/jquery.nav.js' %}"></script>
-<script>
-    $(document).ready(function(){
-        $('#{{ p }}').addClass('active');
-        $('#actions').click(function(){
-            $('#actions').addClass('active');
-        });
-        $('#close').click(function(){
-            $('#actions').removeClass('active');
-        });
-    })
-</script> 
-<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.parallax.js' %}"></script>
-<script src="{% static 'js/jquery.nav.js' %}"></script>
-<script>
-    $(document).ready(function(){
-        $('#{{ p }}').addClass('active');
-        $('#actions').click(function(){
-            $('#actions').addClass('active');
-        });
-        $('#close').click(function(){
-            $('#actions').removeClass('active');
-        });
-    })
-</script> 
+
+
+
     <!-- jQuery -->
     <script src="{% static 'js/jquery.js' %}"></script>
 

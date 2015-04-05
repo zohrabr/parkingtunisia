@@ -62,7 +62,7 @@ function create_markers(c, data){
     };
     var carte = new google.maps.Map($('#map-canvas')[0], options);
     load_markers(carte);
-// Create the search box and link it to the UI element.
+  // Create the search box and link it to the UI element.
     var input =($('#searchBox')[0]);
     //carte.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 

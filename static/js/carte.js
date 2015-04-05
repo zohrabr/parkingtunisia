@@ -62,4 +62,27 @@ function create_markers(c, data){
     };
     var carte = new google.maps.Map($('#map-canvas')[0], options);
     load_markers(carte);
+  // Create the search box and link it to the UI element.
+    var input =($('#searchBox')[0]);
+    //carte.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+    var searchBox = new google.maps.places.SearchBox((input));
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    // For each place, get the icon, place name, and location.
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+      bounds.extend(place.geometry.location);
+    }
+       if (bounds.getNorthEast().equals(bounds.getSouthWest())) { //better fix for zoom issue
+       var extendPoint1 = new google.maps.LatLng(bounds.getNorthEast().lat() + 0.01, bounds.getNorthEast().lng() + 0.01);
+       var extendPoint2 = new google.maps.LatLng(bounds.getNorthEast().lat() - 0.01, bounds.getNorthEast().lng() - 0.01);
+       bounds.extend(extendPoint1);
+       bounds.extend(extendPoint2);
+    }
+    carte.fitBounds(bounds);
+});
