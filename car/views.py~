@@ -103,7 +103,7 @@ def list_park_owner(request):
 	context   =  RequestContext(request)
 	if request.user is not None:
 		ownercon = owner.objects.get(username=request.user.username)
-	list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
+	list_park=parking.objects.filter(proprietaire=ownercon)
 	return render_to_response('car/list_parking.html',{'list_park':list_park},context)
 
 
@@ -137,9 +137,12 @@ def filterpark(request):
 
 def gerer(request):
 	context   =  RequestContext(request)
+	
 	if request.method == "GET":
 		if request.user is not None:
 			ownercon = owner.objects.get(username=request.user.username)
 		list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
-		return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)
+	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)
+			
+		
 

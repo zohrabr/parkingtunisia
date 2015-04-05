@@ -11,24 +11,26 @@
   <div class="panel-heading">La liste de mes parkings :</div>
  <div class="panel-body">
 <div class="span2">	
-<font size ="5" color="orange"> Nom </font></div>
+<font size ="5" color="#8FCF3C"> Nom </font></div>
 
 <div class="span3">
-<font size ="5" color="orange">Nombre totale de place </font>
+<font size ="5" color="#8FCF3C">Nombre totale de place </font>
 </div>
-<div class="span4"><font size ="5" color="orange">Nombre de place disponible </font>
+<div class="span4"><font size ="5" color="#8FCF3C"> Nombre de place disponible </font>
 </div>
 </br> </br>
-	{% for parking in list_park %}
+	{% for parking  in list_park %}
 
 <div class="span2">	
-{{ parking.namepark }} </div>
+{{ parking.namepark }}    </div>
 
 <div class="span3">
  {{ parking.nbrplace }} <br>
 </div>
 <div class="span4">
-<input type="number"  value="{{ parking.nbplacevide }}" name="nbvide"  />
+
+ <input type="number" name="nbpv" value=" {{ parking.nbplacevide }}" >
+
 </div>
 </br> </br>
 	{% endfor %}

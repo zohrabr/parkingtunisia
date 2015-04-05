@@ -1,8 +1,8 @@
 
 {% load static %}
-    <input id="searchBox" type="text">
-    <div id="map-canvas" style="height: 700px;width: 100%;float:left;border:solid 4px orange; "></div>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <input id="searchBox" type="text" style="box-shadow:0 0 5px 2px;"> 
+    <div id="map-canvas" style="height: 700px;width: 100%;float:left;border:solid 1px orange;box-shadow:0 0 5px 2px; "></div>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
     <script src="{% static 'js/markerclusterer.js' %}"></script>
     <script src="{%  static 'js/jquery-2.1.1.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.js' %}"></script>

@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 
 User._meta.get_field('email')._unique = True
 
+genr=(
+	('payant','payant'),
+	('gratuit','gratuit'),
+)
 
 class owner(User):
 	teleport=models.CharField(max_length = 20, blank=True)
@@ -19,7 +23,7 @@ class parking(models.Model):
 	place       =models.CharField(max_length=200)     # adresse
 	position    =GeopositionField()
 	telephone   = models.CharField(max_length = 15)
-	site        = models.URLField(blank=True,max_length = 250)
+	genre = models.CharField(max_length=30, choices=genr, help_text=" crime :")
 	accept      = models.BooleanField(default=False)
 	nbplacevide  =models.IntegerField(default=0) 
 	def get_vide(self):

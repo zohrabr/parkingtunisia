@@ -4,7 +4,10 @@ from django import forms
 from django.contrib.auth.models import User
 
 
-
+genr=(
+	('payant','payant'),
+	('gratuit','gratuit'),
+)
 class userform(forms.ModelForm):
 	 last_name =forms.CharField(help_text="Nom:")
 	 first_name = forms.CharField(help_text="Prénom:")
@@ -23,11 +26,8 @@ class parkingform(forms.ModelForm):
 	nbrplace  = forms.IntegerField( help_text="Nombre total de place :")
 	place     = forms.CharField(max_length=200, help_text="Adresse :")
 	telephone = forms.CharField(max_length = 15,help_text="Téléphone")
-	site 	  = forms.CharField(max_length = 250,help_text="Site web")
+	genre	  = forms.ChoiceField(widget=forms.RadioSelect, choices=genr, help_text=' ')
 	class Meta:
 		model = parking
-		fields=['namepark','nbrplace','place','telephone','site','position']
-
-
-
+		fields=['namepark','nbrplace','place','genre','telephone','position']
 

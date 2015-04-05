@@ -141,5 +141,10 @@ def gerer(request):
 		if request.user is not None:
 			ownercon = owner.objects.get(username=request.user.username)
 		list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
-		return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)
+		l=[]
+		for i in list_park :
+			l.append(i.nbplacevide)
+	return render_to_response('car/gerer_parking.html',{'list_park':list_park, 'l': l},context)
+			
+		
 

@@ -4,7 +4,7 @@
 <div class="span3"></div>
 <div class="span6">
 <div class="hero-unit">
- <div class="panel panel-warning">
+ <div class="panel panel-success">
   <div class="panel-heading">Se connecter</div>
  <div class="panel-body">
 <form id="login_form" method="post" action="/car/login/">
@@ -21,10 +21,10 @@
         <h3>Mot de passe:</h3>
  <input type="password"  placeholder="Password" name="password"  />
         <br /><br /> <br />
-        <button align ="center"class="btn btn-primary" type="submit">se connecter</button>
+        <button align ="center"class="btn btn-success" type="submit">se connecter</button>
 <br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
     </form>
 </div></div>
 </div> </div>
-
+</div>
 {% endblock %}

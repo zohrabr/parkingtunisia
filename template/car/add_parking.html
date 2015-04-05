@@ -7,7 +7,7 @@
 
 <div class="span9">
 
- <div class="panel panel-warning">
+ <div class="panel panel-success">
   <div class="panel-heading">cliquer sur le boutton droit de la souris</div>
  <div class="panel-body">
 {% include 'car/gmindex.html' %}
@@ -26,13 +26,13 @@
             {% csrf_token %}
 		 
           {% for hidden in form.hidden_fields %}
-               <h3> {{ hidden }}</h3> </br>
+               <h3> {{ hidden }}</h3> </br> </br>
             {% endfor %}
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}
                <label> {{ field.help_text }} </label></br>
-                  {% render_field field class+="form-control" %} </br>
+                  {% render_field field class+="form-control" %} 
 	
             {% endfor %} 
 </br>

@@ -3,7 +3,14 @@
 <html>
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
 	
      <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
@@ -15,58 +22,61 @@
 	
 <title>{% block title %} {% endblock %}</title>    
 </head>
-<body  >
+<body style="background-color : #EDF7EA;" >
 
-
+<!-- Navigation -->
 <header style="background-color:black" id="navbar navbar-default navbar-fixed-top " role="navigation">
-	
 <div class="container">
-
 <div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-		       
-		            
-<i class="fa fa-bars">
 
-</i>
-
-</button>
-<a class="brand " href="#"><img src="{% static 'img/aa.png' %}" width="30" height="50"/>
-<font size="6"><i class="fa fa-clock">
-<b>Parking</b> </i> </font>
-
-</a>
-
-</div>
-<div class="collapse navbar-collapse  navbar-main-collapse">
-
-
- <ul class="nav navbar-nav pull-right">
-		          <li class="text-center"> <a href="/car/"><strong>Acceuil</strong>  </a> </li>
-  				
-                            {% if user.is_authenticated %}
-                            <li class="text-center"><a  href="#">Bienvenue <b>{{ user.first_name }} {{ user.last_name}} </b></a></li>
-                            <li class="text-center" id="actions"><a href="#" data-toggle="modal" data-target="#myModal"><strong>Action</strong></a></li>
-                            {% else %}
-                        
-			    <li class="text-center"><a href="/car/carte/"><strong>Consulter</strong></a></li>
-			    <li class="text-center"> <a href="/car/inscription/"><strong>S'inscrir</strong> </a>
-			    <li class="text-center"><a href="/car/login/"><strong>Se connecter</strong></a></li>	
-                            {% endif %}
-		                    
-                            {% if user.is_authenticated %}
-                            <li class="text-center"><a href="/car/logout"><strong>Déconnexion</strong></a></li>
-                            {% endif %}
-		                </ul>
-</ul>
-
+	<a class="brand " href="#">
+<font size="6" color="#8FCF3C"><i class="fa fa-clock"><img src="{% static 'img/car.png' %}" style="height: 60px; width:100px ;" />
+<b>ParkTun</b> </i> </font></a>
+     
 </div>
 </div>
-</div>
-
 </header>
 
+    <nav id="sidebar-wrapper">
 
+        <ul class="sidebar-nav">
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><img src="{% static 'img/home.png'' %}" style="height: 25px;width:25px ;"/></a>
+            <a id="menu-close" href="#" class="btn btn-success btn-lg pull-right toggle"><font size ="5" color="black">X</font></a>
+     
+<li class="sidebar-brand">
+	<a href="#"  onclick = $("#menu-close").click(); ><font size ="6" color="#8FCF3C"><b>Menu</b></font></a>
+  </li>	
+
+          
+            <li>
+                <a href="/car/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Accueil</b></font></a>
+            </li>
+	  {% if user.is_authenticated %}
+<li id="actions">
+                <a href="#" data-toggle="modal" data-target="#myModal" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Action</b></font></a>
+            </li>
+
+	 <li>
+                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Consulter</b></font></a>
+            </li>
+	<li>
+               <a href="/car/logout" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Deconnexion</b> </font></a>
+            </li>
+
+{% else %}
+            
+            <li>
+                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Consulter</b></font></a>
+            </li>
+            <li>
+                <a href="/car/inscription/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>S'inscrire</b></font></a>
+            </li>
+            <li>
+                <a href="/car/login/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><b>Se connecter</b></font></a>
+            </li>
+{% endif %}
+        </ul>
+    </nav>
 
 
                 <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -93,11 +103,17 @@
 </div>
 
 
-    
-      {% block body_block %} 
-                  
+      {% block body_block %}               
 {% endblock %}
 
+<div class="span12">
+<footer style="background-color : #EDF7EA; bottom: 0;">
+
+                    <p class="text-muted" >Copyright &copy; ParkTun 2015 ||  <a href="/admin/"><font color="#8FCF3C">Espace Admin </font> </a></p>
+
+      
+    </footer>
+</div>
 <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.parallax.js' %}"></script>
@@ -113,9 +129,66 @@
         });
     })
 </script> 
+<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.parallax.js' %}"></script>
+<script src="{% static 'js/jquery.nav.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('#{{ p }}').addClass('active');
+        $('#actions').click(function(){
+            $('#actions').addClass('active');
+        });
+        $('#close').click(function(){
+            $('#actions').removeClass('active');
+        });
+    })
+</script> 
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+$(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+
+
+</script>
+
 {% block script %}
 {% endblock %}
-
-<footer >  <div class="span12"> 2015 &copy; Tous droits réservés || Espace <a href="/admin/"> Admin </a> </div> </footer>
 </body>
 </html>
+
+
+
+
+
+

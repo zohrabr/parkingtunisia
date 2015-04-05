@@ -16,18 +16,21 @@
 <div class="span3">
 <font size ="5" color="orange">Nombre totale de place </font>
 </div>
-<div class="span4"><font size ="5" color="orange">Nombre de place disponible </font>
+<div class="span4"><font size ="5" color="orange"> Nombre de place disponible </font>
 </div>
-	{% for parking in list_park %}
+</br> </br>
+	{% for parking  in list_park %}
 
 <div class="span2">	
-{{ parking.namepark }} </div>
+{{ parking.namepark }}    </div>
 
 <div class="span3">
  {{ parking.nbrplace }} <br>
 </div>
 <div class="span4">
-<input type="number"  value="{{ parking.nbplacevide }}" name="nbvide"  />
+
+ <input type="number" name="nbpv" value=" {{ parking.nbplacevide }}" >
+
 </div>
 </br> </br>
 	{% endfor %}

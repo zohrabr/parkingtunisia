@@ -36,7 +36,7 @@
 					
 				</div>
 				<div class="item">
-					<img style="max-height: 550px" class="img-responsive" src="/static/slide/a6.jpg" alt="slider">
+					<img style="max-height: 550px" class="img-responsive" src="/static/slide/a3.jpg" alt="slider">
 					{% if user.is_authenticated %}  
 				<div class="carousel-caption">
 					<div><font size="7" color="#8FCF3C"  >Bienvenue {{ user.first_name }} {{ user.last_name }}  </font> 
