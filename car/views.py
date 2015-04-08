@@ -134,17 +134,26 @@ def filterpark(request):
         return HttpResponse(json.dumps(park, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         return HttpResponse()
-
+@login_required
 def gerer(request):
 	context   =  RequestContext(request)
 	if request.method == "GET":
 		if request.user is not None:
 			ownercon = owner.objects.get(username=request.user.username)
 		list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
-		l=[]
+	
+	elif request.method == "POST":
+		if request.user is not None:
+			ownercon = owner.objects.get(username=request.user.username)
+		list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
 		for i in list_park :
-			l.append(i.nbplacevide)
-	return render_to_response('car/gerer_parking.html',{'list_park':list_park, 'l': l},context)
+			nbpv = str(i.id)
+			f = request.POST[nbpv]
+			i.nbplacevide = f
+			i.save()
+			
+	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)		
+
 			
 		
 

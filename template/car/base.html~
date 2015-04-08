@@ -73,16 +73,16 @@
     </nav>
 
 
- <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog ">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" >
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
         <h4 class="modal-title panel-success" id="myModalLabel">je veux :</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="background-color : #EDF7EA">
 
-          <ul class="list-group-item" style="list-style-type: None">
+          <ul class="list-group-item" style="list-style-type: None;background-color :#EDF7EA " >
        <li class="text-center" id="p2" ><a class="btn btn-success" href="/car/add_parking/">&nbsp;&nbsp;&nbsp; Ajouter un parking &nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
 <li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-danger" href="/car/my_parking_list/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consulter la liste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
 <li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-info" href="/car/gerer/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gérer un parking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></br>
@@ -90,7 +90,7 @@
           </ul>
         </div>
       <div class="modal-footer">
-        <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

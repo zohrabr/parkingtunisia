@@ -28,12 +28,14 @@
  {{ parking.nbrplace }} <br>
 </div>
 <div class="span4">
-
- <input type="number" name="nbpv" value=" {{ parking.nbplacevide }}" >
-
+<form id="gerer" method="post" action="/car/gerer/">
+{% csrf_token %}
+ <input type="number" name="{{ parking.id}}" value="{{ parking.nbplacevide }}" / >
+<button align ="center" type="submit">changer</button>
 </div>
 </br> </br>
 	{% endfor %}
+
 </div></div> </div>
 	{% else %}
 
