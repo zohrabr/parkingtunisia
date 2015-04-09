@@ -12,7 +12,7 @@ urlpatterns=patterns('',
 	url(r'^add_parking/$', views.add_parking , name='ajout'), #parking owner --> add parking
 	url(r'^my_parking_list/$', views.list_park_owner),#afficher la liste des parking pour chaque proprietaire
 	url(r'^delete/$', views.supprimer ),#supprimer
-	url(r'^carte/', views.carte),
-	url(r'^liste/',views.filterpark),
-	url(r'^gerer/',views.gerer),
+	url(r'^carte/$', views.carte),
+	url(r'^liste/$',views.filterpark),
+	url(r'^gerer/$',views.gerer),
 )

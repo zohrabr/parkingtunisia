@@ -14,4 +14,5 @@ urlpatterns=patterns('',
 	url(r'^delete/$', views.supprimer ),#supprimer
 	url(r'^carte/', views.carte),
 	url(r'^liste/',views.filterpark),
+	url(r'^gerer/',views.gerer),
 )
