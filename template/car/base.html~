@@ -17,7 +17,7 @@
 <link href="{% static 'css/main.css' %}" rel="stylesheet">
    <link href="{% static 'css/animate.css' %}" rel="stylesheet" >
     <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
-	
+	   <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/m.png' %}" />
 <title>{% block title %} {% endblock %}</title>    
 </head>
 <body style="background-color : #EDF7EA;" >
@@ -49,11 +49,25 @@
                 <a href="/car/" onclick = $("#menu-close").click(); ><h3><font color="#8FCF3C" ><img src="{% static 'img/h.png' %}" style="height: 20px;width:20px ;"/> &nbsp;Accueil</font></h3></a>
             </li>
 	  {% if user.is_authenticated %}
- <li  id="actions"><a href="#" data-toggle="modal" data-target="#myModal"><font  color="#8FCF3C" ><h3><img src="{% static 'img/act.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Action</h3></font></a></li>
+<!-- <li  id="actions"><a href="#" data-toggle="modal" data-target="#myModal"><font  color="#8FCF3C" ><h3><img src="{% static 'img/act.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Action</h3></font></a></li>
 
-	 <li >
+	 <li >-->
+	<li>
+		 <a href="/car/add_parking/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/home.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Ajouter un parking</h3></font></a>
+	</li>
+<li>
+		 <a href="/car/gerer/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Maj les places disponibles</h3></font></a>
+	</li>
+<li>
+                <a href="/car/my_parking_list/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Mes parkings</h3></font></a>
+            </li>
+<li>
+                <a href="/car/delete/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;supprimer un parking</h3></font></a>
+            </li>
+	<li >
                 <a href="/car/carte/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Consulter la carte</h3></font></a>
             </li>
+
 	<li >
                <a href="/car/logout" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3><img src="{% static 'img/l.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Deconnexion</h3> </font></a>
             </li>
@@ -73,7 +87,7 @@
         </ul>
     </nav>
 
-
+<!--
  <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog ">
     <div class="modal-content">
@@ -81,9 +95,9 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
         <h4 class="modal-title panel-success" id="myModalLabel">je veux :</h4>
       </div>
-      <div class="modal-body" style="background-color : #EDF7EA">
+      <div class="modal-body" >
 
-          <ul class="list-group-item" style="list-style-type: None;background-color :#EDF7EA " >
+          <ul class="list-group-item" style="list-style-type: None " >
        <li class="text-center" id="p2" ><a class="btn btn-success" href="/car/add_parking/">&nbsp;&nbsp;&nbsp; Ajouter un parking &nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
 <li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-danger" href="/car/my_parking_list/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consulter la liste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
 <li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-info" href="/car/gerer/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gérer un parking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></br>
@@ -95,23 +109,12 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
                
 
 
       {% block body_block %}               
 {% endblock %}
-
-<div class="span12">
-<footer style="background-color : #EDF7EA; bottom: 0;">
-
-                    <p class="text-muted" >Copyright &copy; ParkTun 2015 ||  <a href="/admin/"><font color="#8FCF3C">Espace Admin </font> </a></p>
-
-      
-    </footer>
-</div>
-
-
 <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.parallax.js' %}"></script>
@@ -127,7 +130,7 @@
         });
     })
 </script>
-    <!-- jQuery -->
+<!-- jQuery -->
     <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -167,6 +170,14 @@ $(function() {
 
 {% block script %}
 {% endblock %}
+<div class="span12">
+<footer style="background-color : #EDF7EA; bottom: 0;">
+
+                    <p class="text-muted" >Copyright &copy; ParkTun 2015 ||  <a href="/admin/"><font color="#8FCF3C">Espace Admin </font> </a></p>
+
+      
+    </footer>
+</div>    
 </body>
 </html>
 

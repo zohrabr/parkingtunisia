@@ -130,7 +130,7 @@ def carte(request):
 def filterpark(request):
     if request.method == "GET":
         park = parking.objects.filter(accept=True)
-        park = list(park.values_list("namepark", "position","nbplacevide","nbrplace","telephone"))
+        park = list(park.values_list("namepark", "position","nbplacevide","nbrplace","telephone","genre"))
         return HttpResponse(json.dumps(park, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         return HttpResponse()
@@ -148,10 +148,10 @@ def gerer(request):
 		list_park=parking.objects.filter(proprietaire=ownercon, accept=True)
 		for i in list_park :
 			nbpv = str(i.id)
-			f = request.POST[nbpv]
-			i.nbplacevide = f
+			f=request.POST[nbpv]
+			i.nbplacevide =f
 			i.save()
-			
+			return accueil(request)
 	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)		
 
 			

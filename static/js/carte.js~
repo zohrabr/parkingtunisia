@@ -4,7 +4,7 @@ function load_markers(c){
     });
 }
 
-function addMarker(map, latlng, nb_places_libres, nom,nbtot,tel){
+function addMarker(map, latlng, nb_places_libres, nom,nbtot,tel,genre){
     var theaf = '/static/img/p.png';
     var marker = new google.maps.Marker({
         map: map,
@@ -14,7 +14,7 @@ function addMarker(map, latlng, nb_places_libres, nom,nbtot,tel){
     google.maps.event.addListener(marker, 'click', function(){
             var form = '<div id="marker_option" >'+
                 "Parking "+'<font color="green">'+ nom +'</font>' +"</br> Nbre de place disponible : "+ '<font color="red">'
-                +nb_places_libres+'</font>'+ '</br> Nbre total de place: ' + '<font color="red">'+nbtot+'</font>'+'</br> Tel :' +'<font color="blue">'+tel + '</font>'
+                +nb_places_libres+'</font>'+ '</br> Nbre total de place: ' + '<font color="red">'+nbtot+'</font>'+'</br> Tel :' +'<font color="blue">'+tel + '</font>'+'</br>'+'<font color="green">'+genre+'</font>'
                 '</div>';
             var infoWin = new google.maps.InfoWindow({content: form});
             infoWin.open(map, marker);
@@ -39,7 +39,9 @@ function create_markers(c, data){
         console.log(nbtot);
 	var tel =data[i][4] ;
 	console.log(tel);
-        var the_marker = addMarker(c, new google.maps.LatLng(lat, lon), nb_places_libres,nom,nbtot,tel);
+	var genre =data[i][5] ;
+	console.log(genre);
+        var the_marker = addMarker(c, new google.maps.LatLng(lat, lon), nb_places_libres,nom,nbtot,tel,genre);
         markers.push(the_marker);
         google.maps.event.addListener(the_marker, 'click', function(){
             console.log("marker clicked at " + this.getPosition());
