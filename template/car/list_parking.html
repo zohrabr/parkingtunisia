@@ -10,38 +10,37 @@
 <div class="panel panel-success">
   <div class="panel-heading">La liste de mes parkings :</div>
  <div class="panel-body">
-<div class="span2">	
-<font size ="5" color="#84D41D"> Nom</font> </div>
-<div class="span3">
-<font size ="5" color="#84D41D">Nombre totale de place</font> 
-</div>
-<div class="span2">
-<font size ="5" color="#84D41D">Etat </font></div> </br> </br>
-	{% for parking in list_park %}
-
-<div class="span2">	
-{{ parking.namepark }} </div>
-
-<div class="span3">
- {{ parking.nbrplace }} <br>
-</div>
-<div class="span2">
-{% if parking.accept %}
-<font size ="3" color="green"> Accépté </font><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th><font  color="#84D41D">Nom</font></th>
+            <th><font  color="#84D41D">Nombre totale de place</font></th>
+            <th><font color="#84D41D">Etat</font></th>
+        </tr>
+    </thead>
+<tbody>
+{% for parking in list_park %}
+        <tr class="active">
+            <td>{{ parking.namepark }}</td>
+            <td> {{ parking.nbrplace }}</td>
+            <td>{% if parking.accept %}
+<font color="green"> Accépté </font><br>
 {% else %}
-<font size ="3" color="red"> En attente </font><br>
-{% endif %}
-</div> <br> <br>
-	{% endfor %}
-</div></div> </div>
+<font color="red"> En attente </font><br>
+{% endif %}</td>
+        </tr>
+{% endfor %}
+</tbody>
+</table>
 	{% else %}
 
 	<div class="span9">
 	<h1>vous n'avez auccun parking ! </h1> 
-	<p > si vous voulez ajouter un parking<a href="/car/add_parking"> cliquer ici </p>
+	<p > si vous voulez ajouter un parking<a href="/car/add_parking"><font size ="2" color="#84D41D"> cliquer ici </font></p>
 	</div>
 	{% endif %}
 	
-</div></div>
+
+</div></div></div></div>
 <div class="span2"></div> </div> </div>
 {% endblock %}

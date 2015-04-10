@@ -10,32 +10,29 @@
 <div class="panel panel-success">
   <div class="panel-heading">La liste de mes parkings :</div>
  <div class="panel-body">
-<div class="span2">	
-<font size ="5" color="#8FCF3C"> Nom </font></div>
-
-<div class="span3">
-<font size ="5" color="#8FCF3C">Nombre totale de place </font>
-</div>
-<div class="span4"><font size ="5" color="#8FCF3C"> Nombre de place disponible </font>
-</div>
-</br> </br>
+<table class="table">
+    <thead>
+        <tr>
+            <th><font  color="#84D41D">Nom</font></th>
+            <th><font  color="#84D41D">Nombre totale de place</font></th>
+            <th><font color="#84D41D">nombre de place disponible</font></th>
+        </tr>
+    </thead>
+<tbody>
 	{% for parking  in list_park %}
 
-<div class="span2">	
-{{ parking.namepark }}    </div>
-
-<div class="span3">
- {{ parking.nbrplace }} <br>
-</div>
-<div class="span4">
+<tr class="active">
+            <td>{{ parking.namepark }}</td>
+            <td> {{ parking.nbrplace }}</td>
+<td>
 <form id="gerer" method="post" action="/car/gerer/">
 {% csrf_token %}
  <input type="number" name="{{ parking.id}}" value="{{ parking.nbplacevide }}" / >
 <button align ="center" type="submit">changer</button>
-</div>
-</br> </br>
+</td>
 	{% endfor %}
-
+</tbody>
+</table>
 </div></div> </div>
 	{% else %}
 
