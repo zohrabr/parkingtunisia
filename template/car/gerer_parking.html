@@ -27,7 +27,7 @@
 <td>
 <form id="gerer" method="post" action="/car/gerer/">
 {% csrf_token %}
- <input type="number" name="{{ parking.id}}" value="{{ parking.nbplacevide }}" / >
+ <input type="number" name="{{ parking.id}}" value="{{ parking.nbplacevide }}" max="{{ parking.nbrplace }}" / >
 <button align ="center" type="submit">changer</button>
 </td>
 	{% endfor %}

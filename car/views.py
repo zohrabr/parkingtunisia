@@ -52,22 +52,25 @@ def accueil(request):
 
 def user_login(request):
 	context= RequestContext(request)
-	if request.method == 'POST':	
+	if request.method == 'POST':		
 		mail= request.POST['email']
 		userpass = request.POST['password']
 		userf= User.objects.get(email = mail)
-		usern= userf.username
-		user = authenticate(username=usern,password=userpass)
-		if user :
-			if user.is_active:
-				login(request,user)
-				return HttpResponseRedirect('/car/')
+		if userf :
+			usern= userf.username
+			user = authenticate(username=usern,password=userpass)		
+			if user :
+				if user.is_active:
+					login(request,user)
+					return HttpResponseRedirect('/car/')
+				else:
+					return HttpResponse("votre compte est désactivé")
 			else:
-				return HttpResponse("votre compte est désactivé")
-		else:
-			return HttpResponse("<strong>votre @email et/ou mot de passe sont incorrectes !</strong>")
+				return HttpResponse("<strong background-color = 'green'>votre @email et/ou mot de passe sont incorrectes !</strong>")
+		else :
+			return HttpResponse("rani bouk")
 	else:
-		return render_to_response('car/login.html', {}, context)
+			return render_to_response('car/login.html', {}, context)
 
 
 
@@ -151,9 +154,5 @@ def gerer(request):
 			f=request.POST[nbpv]
 			i.nbplacevide =f
 			i.save()
-			return accueil(request)
+		return accueil(request)
 	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)		
-
-			
-		
-
