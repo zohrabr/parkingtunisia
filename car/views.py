@@ -66,7 +66,7 @@ def user_login(request):
 				else:
 					return HttpResponse("votre compte est désactivé")
 			else:
-				return HttpResponse("<strong background-color = 'green'>votre @email et/ou mot de passe sont incorrectes !</strong>")
+				return render_to_response('car/erreurlogin.html', {}, context)
 		else :
 			return HttpResponse("rani bouk")
 	else:
