@@ -156,3 +156,22 @@ def gerer(request):
 			i.save()
 		return accueil(request)
 	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)		
+
+
+def json_test(request):
+	str = '''
+	[
+		{
+			"name": "ensi",
+			"adresse":"hello world - Manouba - Tunis",
+			"telephone": "77-777-777",
+			"empty_places" :  ,
+			"places_count" : "25",
+			"hour_price" : "200",
+			"lat" : "0",
+			"long": "0"
+		}
+	]
+	'''
+	return HttpResponse(str)
+
