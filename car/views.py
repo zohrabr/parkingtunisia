@@ -165,11 +165,31 @@ def json_test(request):
 			"name": "ensi",
 			"adresse":"hello world - Manouba - Tunis",
 			"telephone": "77-777-777",
-			"empty_places" :  ,
+			"empty_places" :  "0",
+			"places_count" : "25",
+			"hour_price" : "200",
+			"lat" : "1",
+			"long": "0"
+		},
+		{
+			"name": "ensi",
+			"adresse":"hello world - Manouba - Tunis",
+			"telephone": "77-777-777",
+			"empty_places" :  "50",
 			"places_count" : "25",
 			"hour_price" : "200",
 			"lat" : "0",
-			"long": "0"
+			"long": "1"
+		},
+		{
+			"name": "ensi",
+			"adresse":"hello world - Manouba - Tunis",
+			"telephone": "77-777-777",
+			"empty_places" :  "15",
+			"places_count" : "25",
+			"hour_price" : "200",
+			"lat" : "1",
+			"long": "1"
 		}
 	]
 	'''
