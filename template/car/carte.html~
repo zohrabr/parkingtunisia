@@ -3,7 +3,7 @@
 {% extends 'car/base.html' %}
 {% load static %}
 <head>
-    <title>{% block title %} a carte{% endblock %}</title>
+    <title>{% block title %} la carte{% endblock %}</title>
     {% block style %}
     {% endblock %}
 </head>
@@ -18,8 +18,8 @@
      </div>
     </div>
 {% endblock %}
-{% block script %}
+
     <script src="{% static 'js/carte.js' %}"></script>
-{% endblock %}
+
 </body>
 </html>

@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '2k_ic-t@-s9d_at*^fgr3e0_g&0ykb)%19ajvrk$ni+lmnz$^x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 SETTINGS_DIR=os.path.dirname(__file__)
@@ -36,6 +36,7 @@ TEMPLATE_DIRS=(
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -7,10 +7,9 @@
  <div class="panel panel-success">
   <div class="panel-heading">Se connecter</div>
  <div class="panel-body">
+<font color='red' size ='4'>votre Email et/ou Mot de passe sont incorrectes !</font>
 <form id="login_form" method="post" action="/car/login/">
-	{% csrf_token %}
-        
-
+	{% csrf_token %}      
       <h3>  Email:</h3>
       <input type="text"  placeholder="Email" name="email"  />
         <br/>

@@ -1,7 +1,28 @@
  {% extends 'car/base.html' %}
 {%block body_block %}
-<div class="span4"></div>
+
+
+<div class="span2"></div>
+<div class="span8">
+<div class="panel panel-success">
+  <div class="panel-heading">Voulez vous supprimer un parking ?</div>
+ <div class="panel-body">
+<<<<<<< HEAD
+<font color='red' size='4'>! Veuillez verifier le nom du parking à supprimer. </font>
+=======
+<font color='red' size='4'>! Veuillez  verifier le nom du parking à supprimer </font>
+>>>>>>> 926327b722a1f20750b50d5179d806ec0c885675
+<div class="hero-unit">	
+
+<form id="f" method="post" action="/car/delete/">
+	{% csrf_token %}	
+<div class="span3">	
+		<font size="5" color="#8FCF3C">  Nom du parking :</font> </div>
 <div class="span4">
-<h1>auccun parking n'est trouvée!</h1> <h3> Prière de verifier le nom de votre parking à supprimer </h3>
+      <input type="text"  name="name"  /> 
+	    
+     <button align ="center"class="btn btn-success" type="submit">supprimer</button> </form> </div>
+</div> </div> </div></div>
+<div class="span2"></div>
 </div>
 {% endblock %}

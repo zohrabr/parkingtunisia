@@ -18,7 +18,7 @@
    <link href="{% static 'css/animate.css' %}" rel="stylesheet" >
     <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
 	   <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/m.png' %}" />
-<title>{% block title %} {% endblock %}</title>    
+<title>{% block title %} {% endblock %}</title>  
 </head>
 <body style="background-color : #EDF7EA;" >
 
@@ -28,7 +28,7 @@
 <div class="navbar-header">
 
 	<a class="brand " href="/car/">
-<font size="6" color="#8FCF3C"><i class="fa fa-clock"><img src="{% static 'img/car.png' %}" style="height: 60px; width:100px;" />
+<font size="6" color="#8FCF3C"><i class="fa fa-clock"><img src="{% static 'img/12.png' %}" style="height: 60px; width:60px;" />
 <b>ParkTun</b> </i> </font></a>
      
 </div>
@@ -56,13 +56,13 @@
 		 <a href="/car/add_parking/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/home.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Ajouter un parking</h3></font></a>
 	</li>
 <li>
-		 <a href="/car/gerer/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Maj les places disponibles</h3></font></a>
+		 <a href="/car/gerer/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/up.png' %}" style="height: 28px;width:28px ;"/>&nbsp;Maj la disponibilité</h3></font></a>
 	</li>
 <li>
-                <a href="/car/my_parking_list/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Mes parkings</h3></font></a>
+                <a href="/car/my_parking_list/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/list.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Mes parkings</h3></font></a>
             </li>
 <li>
-                <a href="/car/delete/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;supprimer un parking</h3></font></a>
+                <a href="/car/delete/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/trash.png' %}" style="height: 20px;width:20px ;"/>&nbsp;supprimer un parking</h3></font></a>
             </li>
 	<li >
                 <a href="/car/carte/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Consulter la carte</h3></font></a>
@@ -75,61 +75,27 @@
 {% else %}
             
              <li >
-                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Consulter la carte</h3></font></a>
+                <a href="/car/carte/" onclick = $("#menu-close").click(); ><font color="#8FCF3C"><h3><img src="{% static 'img/m.png' %}" style="heigh: 20px;width:20px ;"/>&nbsp;Consulter la carte</h3></font></a>
             </li>
             <li >
-                <a href="/car/inscription/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3><img src="{% static 'img/r.png' %}" style="height: 20px;width:20px ;"/>&nbsp;S'inscrire</h3></font></a>
+                <a href="/car/inscription/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3><img src="{% static 'img/r.png' %}" style="heigh: 28px;width:28px ;"/>&nbsp;S'inscrire</h3></font></a>
             </li >
             <li>
-                <a href="/car/login/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3><img src="{% static 'img/in.png' %}" style="height: 20px;width:20px ;"/>&nbsp;Se connecter</h3></font></a>
+                <a href="/car/login/" onclick = $("#menu-close").click(); ><font size ="3" color="#8FCF3C"><h3><img src="{% static 'img/in.png' %}" style="heigh:30px;width:40px ;"/>Se connecter</h3></font></a>
             </li>
 {% endif %}
         </ul>
     </nav>
 
-<!--
- <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-  <div class="modal-dialog ">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-        <h4 class="modal-title panel-success" id="myModalLabel">je veux :</h4>
-      </div>
-      <div class="modal-body" >
-
-          <ul class="list-group-item" style="list-style-type: None " >
-       <li class="text-center" id="p2" ><a class="btn btn-success" href="/car/add_parking/">&nbsp;&nbsp;&nbsp; Ajouter un parking &nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-danger" href="/car/my_parking_list/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consulter la liste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-info" href="/car/gerer/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gérer un parking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></br>
-<li class="text-center" id="p3" uid-data="{{ user.id }}" ><a class="btn btn-primary" href="/car/delete/">supprimer un parking</a></li>
-          </ul>
-        </div>
-      <div class="modal-footer">
-        <button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>-->
-               
+    
 
 
       {% block body_block %}               
 {% endblock %}
-<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.parallax.js' %}"></script>
-<script src="{% static 'js/jquery.nav.js' %}"></script>
-<script>
-    $(document).ready(function(){
-        $('#{{ p }}').addClass('active');
-        $('#actions').click(function(){
-            $('#actions').addClass('active');
-        });
-        $('#close').click(function(){
-            $('#actions').removeClass('active');
-        });
-    })
-</script>
+
+
+{% block script %}
+{% endblock %}
 <!-- jQuery -->
     <script src="{% static 'js/jquery.js' %}"></script>
 
@@ -149,6 +115,7 @@
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
     });
+ // Scrolls to the selected menu item on the page
 $(function() {
         $('a[href*=#]:not([href=#])').click(function() {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
@@ -168,8 +135,7 @@ $(function() {
 
 </script>
 
-{% block script %}
-{% endblock %}
+  
 <div class="span12">
 <footer style="background-color : #EDF7EA; bottom: 0;">
 
@@ -178,6 +144,7 @@ $(function() {
       
     </footer>
 </div>    
+
 </body>
 </html>
 

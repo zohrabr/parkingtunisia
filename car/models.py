@@ -23,21 +23,10 @@ class parking(models.Model):
 	place       =models.CharField(max_length=200)     # adresse
 	position    =GeopositionField()
 	telephone   = models.CharField(max_length = 15)
-	genre = models.CharField(max_length=30, choices=genr, help_text=" crime :")
+	genre = models.CharField(max_length=30, choices=genr)
 	accept      = models.BooleanField(default=False)
 	nbplacevide  =models.IntegerField(default=0) 
-	def get_vide(self):
-		return self.nbplacevide
-	def modif_vide(self,nb):
-		if (self.nbplacevide + nb) <= self.nbrplace :
-			self.nbplacevide+=nb
-		return self.nbplacevide
-	def supprime(self):
-		self.delete()
 	
-	def __unicode__(self):
-		return self.namepark
-
 
 
 

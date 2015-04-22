@@ -55,8 +55,8 @@ def user_login(request):
 	if request.method == 'POST':		
 		mail= request.POST['email']
 		userpass = request.POST['password']
-		userf= User.objects.get(email = mail)
-		if userf :
+		try:
+			userf= User.objects.get(email = mail)
 			usern= userf.username
 			user = authenticate(username=usern,password=userpass)		
 			if user :
@@ -66,9 +66,9 @@ def user_login(request):
 				else:
 					return HttpResponse("votre compte est désactivé")
 			else:
-				return render_to_response('car/erreurlogin.html', {}, context)
-		else :
-			return HttpResponse("rani bouk")
+					return render_to_response('car/erreurlogin.html', {}, context)
+		except User.DoesNotExist:	
+			return render_to_response('car/erreurlogin.html', {}, context)
 	else:
 			return render_to_response('car/login.html', {}, context)
 
@@ -155,4 +155,47 @@ def gerer(request):
 			i.nbplacevide =f
 			i.save()
 		return accueil(request)
-	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)		
+	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)	
+
+def mobile(request):	
+	listpark= parking.objects.filter(accept=True)
+	l=[]	
+	lista=[]
+	if request.method =='GET':
+		if 'top' and 'bottom' and 'left' and 'right' not in request.GET:
+			return HttpResponse("ERREUUUUUUUUUUUUUUR")
+        	top = int(request.GET['top'])
+		bottom = int(request.GET['bottom'])
+		left = int(request.GET['left'])
+		right = int(request.GET['right'])
+		#lis=list(listpark.values_list("position","id"))
+		c,d =None, None
+		for i in listpark:
+			c = i.position.latitude
+			d = i.position.longitude
+			if (d >= right ) and (d <= left) and (c >= bottom) and (c <= top) :
+				l.append(i.id)
+		for j in l :
+			p= parking.objects.get(id=j)
+			lista.append(p)
+		h={}
+		for obj in lista :
+			a= obj.namepark
+			h["nom"]= obj.namepark 
+      			""""empty_places": obj.nbplacevide,
+			"adresse" : obj.place,
+			"lat": obj.position.latitude,
+			"long":obj.position.longitude,
+			"type":obj.genre,
+			"telephone":obj.telephone,
+			}"""
+			lista.append(h)
+	
+		return HttpResponse(json.dumps(lista, cls=DjangoJSONEncoder), content_type="application/json")
+	else:
+	        return HttpResponse()
+		
+			
+
+			
+		
