@@ -16,4 +16,5 @@ urlpatterns=patterns('',
 	url(r'^liste/$',views.filterpark),
 	url(r'^gerer/$',views.gerer),
 	url(r'^listmobile/',views.mobile),
+
 )

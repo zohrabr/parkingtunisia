@@ -155,12 +155,14 @@ def gerer(request):
 			i.nbplacevide =f
 			i.save()
 		return accueil(request)
+
 	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)	
 
 def mobile(request):	
 	listpark= parking.objects.filter(accept=True)
 	l=[]	
 	lista=[]
+	filter_parking=[]
 	if request.method =='GET':
 		if 'top' and 'bottom' and 'left' and 'right' not in request.GET:
 			return HttpResponse("ERREUUUUUUUUUUUUUUR")
@@ -168,7 +170,6 @@ def mobile(request):
 		bottom = int(request.GET['bottom'])
 		left = int(request.GET['left'])
 		right = int(request.GET['right'])
-		#lis=list(listpark.values_list("position","id"))
 		c,d =None, None
 		for i in listpark:
 			c = i.position.latitude
@@ -178,24 +179,21 @@ def mobile(request):
 		for j in l :
 			p= parking.objects.get(id=j)
 			lista.append(p)
-		h={}
-		for obj in lista :
-			a= obj.namepark
-			h["nom"]: obj.namepark 
-      			""""empty_places": obj.nbplacevide,
-			"adresse" : obj.place,
-			"lat": obj.position.latitude,
-			"long":obj.position.longitude,
-			"type":obj.genre,
-			"telephone":obj.telephone,
-			}"""
-			lista.append(h)
+		lon = len(lista)
+		for j in range(0,lon) :	
+			h={
+			"name": lista[j].namepark,
+			"adresse":lista[j].place,
+			"telephone": lista[j].telephone,
+			"empty_places" :  lista[j].nbplacevide,
+			"places_count" : lista[j].nbrplace,
+			"hour_price" : lista[j].genre,
+			"lat" : lista[j].position.latitude,
+			"long": lista[j].position.longitude
+			}
+			filter_parking.append(h)
 	
-		return HttpResponse(json.dumps(lista, cls=DjangoJSONEncoder), content_type="application/json")
+		return HttpResponse(json.dumps(filter_parking, cls=DjangoJSONEncoder), content_type="application/json")
 	else:
 	        return HttpResponse()
-		
-			
-
-			
 		

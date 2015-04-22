@@ -27,7 +27,7 @@ SETTINGS_DIR=os.path.dirname(__file__)
 PROJECT_PATH=os.path.join(SETTINGS_DIR,os.pardir)
 PROJECT_PATH=os.path.abspath(PROJECT_PATH)
 TEMPLATE_PATH=os.path.join(PROJECT_PATH,'template')
-ALLOWED_HOSTS = ['parkingtunisie.olympe.in']
+ALLOWED_HOSTS = ['*']
 TEMPLATE_DIRS=(
 	TEMPLATE_PATH, 
 )
@@ -92,6 +92,11 @@ LOGIN_URL='/car/login/'
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_PATH=os.path.join(PROJECT_PATH,'static')
 STATIC_URL = '/static/'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS=(
 	STATIC_PATH ,
 )
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
