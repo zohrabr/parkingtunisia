@@ -133,7 +133,7 @@ def carte(request):
 def filterpark(request):
     if request.method == "GET":
         park = parking.objects.filter(accept=True)
-        park = list(park.values_list("namepark", "position","nbplacevide","nbrplace","telephone","genre"))
+        park = list(park.values_list("namepark", "position","nbplacevide","nbrplace","telephone","prix"))
         return HttpResponse(json.dumps(park, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         return HttpResponse()
@@ -166,10 +166,10 @@ def mobile(request):
 	if request.method =='GET':
 		if 'top' and 'bottom' and 'left' and 'right' not in request.GET:
 			return HttpResponse("ERREUUUUUUUUUUUUUUR")
-        	top = int(request.GET['top'])
-		bottom = int(request.GET['bottom'])
-		left = int(request.GET['left'])
-		right = int(request.GET['right'])
+        	top = float(request.GET['top'])
+		bottom = float(request.GET['bottom'])
+		left = float(request.GET['left'])
+		right = float(request.GET['right'])
 		c,d =None, None
 		for i in listpark:
 			c = i.position.latitude
@@ -187,7 +187,7 @@ def mobile(request):
 			"telephone": lista[j].telephone,
 			"empty_places" :  lista[j].nbplacevide,
 			"places_count" : lista[j].nbrplace,
-			"hour_price" : lista[j].genre,
+			"hour_price" : lista[j].prix,
 			"lat" : lista[j].position.latitude,
 			"long": lista[j].position.longitude
 			}
