@@ -189,9 +189,9 @@ def filterParkings(request):
 				"telephone" :	lista[j].telephone,
 				"empty_places": lista[j].nbplacevide,
 				"places_count": lista[j].nbrplace,
-				"hour_price" : 	lista[j].genre,
-				"lat"  : 		lista[j].position.latitude,
-				"long" : 		lista[j].position.longitude
+				"hour_price" : 	str(lista[j].genre),
+				"lat"  : 		str(lista[j].position.latitude),
+				"long" : 		str(lista[j].position.longitude)
 			}
 			filter_parking.append(h)
 		print filter_parking
