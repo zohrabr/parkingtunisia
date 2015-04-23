@@ -158,14 +158,14 @@ def gerer(request):
 
 	return render_to_response('car/gerer_parking.html',{'list_park':list_park},context)	
 
-def mobile(request):	
+def filterParkings(request):	
 	listpark= parking.objects.filter(accept=True)
 	l=[]	
 	lista=[]
 	filter_parking=[]
 	if request.method =='GET':
 		if 'top' not in request.GET or 'bottom' not in request.GET or 'left' not in request.GET  or 'right' not in request.GET: #this line gave me cancer !
-			return HttpResponse("please provide args")
+			return filterpark(request)
 
 		top = int(request.GET['top'])
 		bottom = int(request.GET['bottom'])
@@ -183,7 +183,7 @@ def mobile(request):
 		lon = len(lista)
 		for j in range(0,lon) :	
 			h={
-				"name" : 		lista[j].namepark,
+				"name" 	: 		lista[j].namepark,
 				"adresse" :		lista[j].place,
 				"telephone" :	lista[j].telephone,
 				"empty_places": lista[j].nbplacevide,
