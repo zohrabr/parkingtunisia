@@ -164,9 +164,10 @@ def mobile(request):
 	lista=[]
 	filter_parking=[]
 	if request.method =='GET':
-		if 'top' and 'bottom' and 'left' and 'right' not in request.GET:
-			return HttpResponse("ERREUUUUUUUUUUUUUUR")
-        	top = int(request.GET['top'])
+		if 'top' and 'bottom' and 'left' and 'right' not in request.GET: #this line gave me cancer !
+			return HttpResponse("please provide args")
+        
+        top = int(request.GET['top'])
 		bottom = int(request.GET['bottom'])
 		left = int(request.GET['left'])
 		right = int(request.GET['right'])
