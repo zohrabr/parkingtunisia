@@ -167,7 +167,7 @@ def mobile(request):
 		if 'top' and 'bottom' and 'left' and 'right' not in request.GET: #this line gave me cancer !
 			return HttpResponse("please provide args")
 
-        top = int(request.GET['top'])
+		top = int(request.GET['top'])
 		bottom = int(request.GET['bottom'])
 		left = int(request.GET['left'])
 		right = int(request.GET['right'])
