@@ -165,17 +165,18 @@ def filterParkings(request):
 	filter_parking=[]
 	if request.method =='GET':
 		if 'top' not in request.GET or 'bottom' not in request.GET or 'left' not in request.GET  or 'right' not in request.GET: #this line gave me cancer !
+			print" returning regular list"
 			return filterpark(request)
 
 		top 	= float(request.GET['top'])
 		bottom 	= float(request.GET['bottom'])
 		left 	= float(request.GET['left'])
 		right 	= float(request.GET['right'])
-		c,d =None, None
+
 		for i in listpark:
 			c = i.position.latitude
 			d = i.position.longitude
-			if (d >= right ) and (d <= left) and (c >= bottom) and (c <= top) :
+			if (d <= right ) and (d >= left) and (c >= bottom) and (c <= top) :
 				l.append(i.id)
 		for j in l :
 			p= parking.objects.get(id=j)
@@ -193,8 +194,8 @@ def filterParkings(request):
 				"long" : 		lista[j].position.longitude
 			}
 			filter_parking.append(h)
-	
-		return HttpResponse(json.dumps(filter_parking, cls=DjangoJSONEncoder), content_type="application/json")
+		print filter_parking
+		return HttpResponse(json.dumps(filter_parking), content_type="application/json")
 	else:
-	        return HttpResponse()
+		return HttpResponse()
 		
