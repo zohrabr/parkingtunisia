@@ -167,10 +167,10 @@ def filterParkings(request):
 		if 'top' not in request.GET or 'bottom' not in request.GET or 'left' not in request.GET  or 'right' not in request.GET: #this line gave me cancer !
 			return filterpark(request)
 
-		top = int(request.GET['top'])
-		bottom = int(request.GET['bottom'])
-		left = int(request.GET['left'])
-		right = int(request.GET['right'])
+		top 	= float(request.GET['top'])
+		bottom 	= float(request.GET['bottom'])
+		left 	= float(request.GET['left'])
+		right 	= float(request.GET['right'])
 		c,d =None, None
 		for i in listpark:
 			c = i.position.latitude
