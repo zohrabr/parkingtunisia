@@ -182,14 +182,14 @@ def mobile(request):
 		lon = len(lista)
 		for j in range(0,lon) :	
 			h={
-			"name": lista[j].namepark,
-			"adresse":lista[j].place,
-			"telephone": lista[j].telephone,
-			"empty_places" :  lista[j].nbplacevide,
-			"places_count" : lista[j].nbrplace,
-			"hour_price" : lista[j].genre,
-			"lat" : lista[j].position.latitude,
-			"long": lista[j].position.longitude
+				"name" : 		lista[j].namepark,
+				"adresse" :		lista[j].place,
+				"telephone" :	lista[j].telephone,
+				"empty_places": lista[j].nbplacevide,
+				"places_count": lista[j].nbrplace,
+				"hour_price" : 	lista[j].genre,
+				"lat"  : 		lista[j].position.latitude,
+				"long" : 		lista[j].position.longitude
 			}
 			filter_parking.append(h)
 	
