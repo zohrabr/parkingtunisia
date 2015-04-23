@@ -39,7 +39,7 @@ function create_markers(c, data){
         console.log(nbtot);
 	var tel =data[i][4] ;
 	console.log(tel);
-	var genre =data[i][5] ;
+	var prix =parseInt(data[i][5]) ;
 	console.log(prix);
         var the_marker = addMarker(c, new google.maps.LatLng(lat, lon), nb_places_libres,nom,nbtot,tel,prix);
         markers.push(the_marker);

@@ -1,5 +1,5 @@
 function load_markers(c){
-    $.get('/car/liste/', function(data){
+    $.get('/car/weblist/', function(data){
         create_markers(c, data);
     });
 }
@@ -14,7 +14,7 @@ function addMarker(map, latlng, nb_places_libres, nom,nbtot,tel,prix){
     google.maps.event.addListener(marker, 'click', function(){
             var form = '<div id="marker_option" >'+
                 "Parking "+'<font color="green">'+ nom +'</font>' +"</br> Nbre de place disponible : "+ '<font color="red">'
-                +nb_places_libres+'</font>'+ '</br> Nbre total de place: ' + '<font color="red">'+nbtot+'</font>'+'</br> Tel :' +'<font color="blue">'+tel + '</font>'+'</br>'+'prix d\'une place en millimes:<font color="green">'+prix+'</font>'
+                +nb_places_libres+'</font>'+ '</br> Nbre total de place: ' + '<font color="red">'+nbtot+'</font>'+'</br> Tel :' +'<font color="blue">'+tel + '</font>'+'</br>'+'<font color="blue">'+"prix/place :"+'<font color="green">'+prix+'</font>'+"millimes:"+'</font>'
                 '</div>';
             var infoWin = new google.maps.InfoWindow({content: form});
             infoWin.open(map, marker);
@@ -39,7 +39,7 @@ function create_markers(c, data){
         console.log(nbtot);
 	var tel =data[i][4] ;
 	console.log(tel);
-	var genre =data[i][5] ;
+	var prix =parseInt(data[i][5]) ;
 	console.log(prix);
         var the_marker = addMarker(c, new google.maps.LatLng(lat, lon), nb_places_libres,nom,nbtot,tel,prix);
         markers.push(the_marker);

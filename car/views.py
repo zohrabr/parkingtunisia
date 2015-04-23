@@ -137,6 +137,8 @@ def filterpark(request):
         return HttpResponse(json.dumps(park, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         return HttpResponse()
+
+
 @login_required
 def gerer(request):
 	context   =  RequestContext(request)
@@ -163,60 +165,35 @@ def filterParkings(request):
 	l=[]	
 	lista=[]
 	filter_parking=[]
-	if request.method =='GET':
-<<<<<<< HEAD
-		if 'top' and 'bottom' and 'left' and 'right' not in request.GET:
-			return HttpResponse("ERREUUUUUUUUUUUUUUR")
-        	top = float(request.GET['top'])
-		bottom = float(request.GET['bottom'])
-		left = float(request.GET['left'])
-		right = float(request.GET['right'])
-		c,d =None, None
-=======
-		if 'top' not in request.GET or 'bottom' not in request.GET or 'left' not in request.GET  or 'right' not in request.GET: #this line gave me cancer !
-			print" returning regular list"
-			return filterpark(request)
+	if ('top'  or 'bottom'  or 'left'  or 'right') not in request.GET:
+		return filterpark(request)
 
-		top 	= float(request.GET['top'])
-		bottom 	= float(request.GET['bottom'])
-		left 	= float(request.GET['left'])
-		right 	= float(request.GET['right'])
+	top 	= float(request.GET['top'])
+	bottom 	= float(request.GET['bottom'])
+	left 	= float(request.GET['left'])
+	right 	= float(request.GET['right'])
 
->>>>>>> d89ddb8307d3608c1912eb1b3b675aa14a9bfc69
-		for i in listpark:
-			c = i.position.latitude
-			d = i.position.longitude
-			if (d <= right ) and (d >= left) and (c >= bottom) and (c <= top) :
-				l.append(i.id)
-		for j in l :
-			p= parking.objects.get(id=j)
-			lista.append(p)
-		lon = len(lista)
-		for j in range(0,lon) :	
+	for i in listpark:
+		c = i.position.latitude
+		d = i.position.longitude
+		if (d >= right ) and (d <= left) and (c >= bottom) and (c <= top) :
+			l.append(i.id)
+	for j in l :
+		p= parking.objects.get(id=j)
+		lista.append(p)
+	lon = len(lista)
+	for j in range(0,lon) :	
 			h={
-<<<<<<< HEAD
-			"name": lista[j].namepark,
-			"adresse":lista[j].place,
-			"telephone": lista[j].telephone,
-			"empty_places" :  lista[j].nbplacevide,
-			"places_count" : lista[j].nbrplace,
-			"hour_price" : lista[j].prix,
-			"lat" : lista[j].position.latitude,
-			"long": lista[j].position.longitude
-=======
 				"id"	:		lista[j].id,
 				"name" 	: 		lista[j].namepark,
 				"adresse" :		lista[j].place,
-				"telephone" :	lista[j].telephone,
-				"empty_places": lista[j].nbplacevide,
-				"places_count": lista[j].nbrplace,
-				"hour_price" : 	str(lista[j].genre),
+				"telephone" :		lista[j].telephone,
+				"empty_places": 	lista[j].nbplacevide,
+				"places_count":	 	lista[j].nbrplace,
+				"hour_price" : 		lista[j].prix,
 				"lat"  : 		str(lista[j].position.latitude),
 				"long" : 		str(lista[j].position.longitude)
->>>>>>> d89ddb8307d3608c1912eb1b3b675aa14a9bfc69
 			}
 			filter_parking.append(h)
-		return HttpResponse(json.dumps(filter_parking), content_type="application/json")
-	else:
-		return HttpResponse()
-		
+	return HttpResponse(json.dumps(filter_parking), content_type="application/json")
+	
