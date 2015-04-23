@@ -1,4 +1,3 @@
- 
 from django.conf.urls import  patterns, url
 from car import views
 
@@ -16,5 +15,4 @@ urlpatterns=patterns('',
 	url(r'^liste/$',views.filterpark),
 	url(r'^gerer/$',views.gerer),
 	url(r'^list/',views.mobile),
-
 )
