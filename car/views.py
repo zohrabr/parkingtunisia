@@ -194,7 +194,6 @@ def filterParkings(request):
 				"long" : 		str(lista[j].position.longitude)
 			}
 			filter_parking.append(h)
-		print filter_parking
 		return HttpResponse(json.dumps(filter_parking), content_type="application/json")
 	else:
 		return HttpResponse()
