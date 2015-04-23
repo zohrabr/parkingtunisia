@@ -184,6 +184,7 @@ def filterParkings(request):
 		lon = len(lista)
 		for j in range(0,lon) :	
 			h={
+				"id"	:		lista[j].id,
 				"name" 	: 		lista[j].namepark,
 				"adresse" :		lista[j].place,
 				"telephone" :	lista[j].telephone,
